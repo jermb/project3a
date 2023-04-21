@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="form">
+        <h1>Stock Data Visualizer</h1>
+
+        <form method="post">
+
+            <div class="field">
+                <label for="symbol">Stock Symbol:</label>
+                <select name="symbol">
+                    <option value="empty">Select a symbol</option>
+                    {% for symbol in symbols %}
+                        <option value="{{ symbol }}">{{ symbol }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="graphType">Graph Type:</label>
+                <select name="graphType">
+                    <option value="empty">Select a graph type</option>
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="timeSeries">Time Series:</label>
+                <select name="timeSeries">
+                    <option value="empty">Select a time series</option>
+                    <option value="TIME_SERIES_INTRADAY">Intraday</option>
+                    <option value="TIME_SERIES_DAILY_ADJUSTED">Daily</option>
+                    <option value="TIME_SERIES_WEEKLY">Weekly</option>
+                    <option value="TIME_SERIES_MONTHLY">Monthly</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="start">Start Date:</label>
+                <input type="date" name="start">
+            </div>
+
+            <div class="field">
+                <label for="end">End Date:</label>
+                <input type="date" name="end" id="">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="chart">
+        {% if graph != None %}
+            <embed type="image/svg+xml" src= {{ graph|safe }} />
+        {% endif %}
+    </div>
+{% endblock %}

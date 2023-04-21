@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  web:
+    build: 
+      # In this directory
+      context: .
+      # Dockerfile named Dockerfile
+      dockerfile: Dockerfile
+        # Image name
+    image: project3a-edson
+    container_name: project3a-edson
+    ports:
+      # local:container
+      - "5005:5005"
+    volumes:
+      # Map contents of current directory to app directory in container
+      # Changes in local directory are reflected in container
+      - .:/app
+    environment:
+      # Run in debug mode i guess
+      - FLASK_DEBUG=1

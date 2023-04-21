@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project3a - FlaskApp</title>
+    <style>
+        #chart {
+            width: 70%;
+            margin: auto;
+        }
+        #form {
+            margin: 1%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        select, input {
+            width: 150px;
+            padding: 1px;
+            text-align: center;
+        }
+        input {
+            width: 144px;
+        }
+        form {
+            width: 275px;
+            display: flex;
+            flex-direction: column;
+        }
+        .field {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 2px 0;
+        }
+        button {
+            width: 50%;
+            margin: 5px 0;
+            align-self: center;
+        }
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
